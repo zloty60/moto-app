@@ -40,7 +40,7 @@ exports.saveImagesInCloud = asyncHandler(async (req, res, next) => {
         allowed_formats: ["jpeg", "png", "jpg"],
         transformation: [{ width: 2000, height: 1333, crop: "fill" }],
       });
-      req.body.images.push(cloudinaryRes.url);
+      req.body.images.push(cloudinaryRes.secure_url);
     })
   );
   next();
