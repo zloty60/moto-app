@@ -1,0 +1,4 @@
+.image-gallery-content.fullscreen {
+  top: 50%;
+  transform: translateY(-50%);
+}

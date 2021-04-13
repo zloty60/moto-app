@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Grid, Card, Box } from "@material-ui/core";
+import { Grid, Card, Box, useTheme, useMediaQuery } from "@material-ui/core";
 import Alert from "@material-ui/lab/Alert";
 
 import { fetchSingleOffer } from "./../redux/actions/offerActions";
@@ -14,6 +14,8 @@ import { SellerActionCard } from "./../components/offerDetails/SellerActionCard"
 import { ImageGalleryLoader } from "./../components/offerDetails/ImageGalleryLoader";
 
 export function Offer(props) {
+  const theme = useTheme();
+  const sm = useMediaQuery(theme.breakpoints.up("sm"));
   const dispatch = useDispatch();
   const id = props.match.params.id;
   const { singleOffer, loading, error, errorMsg } = useSelector(
@@ -39,7 +41,7 @@ export function Offer(props) {
       <Grid container spacing={3} justify="space-between">
         <Grid item xs={12} md={8}>
           <Card>
-            <Box p={3}>
+            <Box p={sm ? 3 : 0}>
               {loading && loading === "fetchSingleOffer" ? (
                 <ImageGalleryLoader />
               ) : (
